@@ -329,26 +329,47 @@
 
                 <div class="col-lg-5 col-12 mx-auto">
                 <h4 class="mb-4 pb-lg-2">Please join us!</h4>
-                    <form action="#" method="post" class="custom-form membership-form shadow-lg" role="form">
+                    <form enctype="multipart/form-data" action="{{route('member.store')}}" method="post" class="custom-form membership-form shadow-lg" role="form">
+                        @csrf
                         <h4 class="text-white mb-4">Become a member</h4>
 
-                            <div class="form-floating">
-                                <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
-                                
-                                <label for="floatingInput">Full Name</label>
-                            </div>
+                        @if (session('member'))
+                            <div class="alert alert-success">{{session('member')}}</div>
+                        @endif
 
                             <div class="form-floating">
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+                                <input type="text" name="full_name" id="full-name" class="form-control" placeholder="Full Name">
+                                
+                                <label for="floatingInput">Full Name</label>
+                                @error('full_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            
+                             
+
+                            <div class="form-floating">
+                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address">
                                 
                                 <label for="floatingInput">Email address</label>
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
+                           
 
                             <div class="form-floating">
                                 <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
                                 
                                 <label for="floatingTextarea"> Comments</label>
+                                @error('message')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
+                      
 
                             <button type="submit" class="form-control">Submit</button>
                         </div>

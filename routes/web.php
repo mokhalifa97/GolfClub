@@ -20,3 +20,4 @@ Route::get('/detail', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/store', 'MemberController@store')->name('member.store');
