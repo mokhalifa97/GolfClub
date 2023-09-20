@@ -346,8 +346,6 @@
                                 @enderror
                             </div>
 
-                            
-                             
 
                             <div class="form-floating">
                                 <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address">
